@@ -74,7 +74,7 @@ II,### Thêm người mới vào dataset
    - ArcFace is a state-of-the-art face recognition algorithm that focuses on learning highly discriminative features for face verification and identification. It is known for its robustness to variations in lighting, pose, and facial expressions.
 
     <p align="center">
-    <img src="./assets/Screenshot 2025-03-15 164219.png" alt="ArcFace" />
+    <img src="![image](https://github.com/user-attachments/assets/a6521356-a8c3-4e5c-8b43-43578d653f02)" alt="ArcFace" />
     <br>
     <em>ArcFace</em>
     </p>
