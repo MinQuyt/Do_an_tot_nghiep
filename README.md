@@ -12,7 +12,13 @@ Download thư viện insightface từ trên github về máy https://github.com/
    ```
 Download các thư viện cần thiết:
   ```shell
-  pip install flask opencv-python numpy insightface mysql-connector-python
+  pip install flask
+pip install opencv-python
+pip install numpy
+pip install insightface
+pip install mysql-connector-python
+pip install pyttsx3
+pip install requests
   ```
     
 II,### Thêm người mới vào dataset
