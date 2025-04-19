@@ -48,13 +48,13 @@ II,### Thêm người mới vào dataset
 3. **Run to add new persons**
 
    ```shell
-   python add_persons.py
+   python save_embeddings.py
    ```
 
 4. **Run to recognize**
 
    ```shell
-   python recognize.py
+   python app.py
    ```
 ## Technology
 
