@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>📸 Nhật ký nhận diện</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background-color: #f2f2f2; }
+        img { width: 120px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <h2>📜 Danh sách nhận diện khuôn mặt</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Tên</th>
+                <th>MSSV</th>
+                <th>Độ tương đồng</th>
+                <th>Thời gian</th>
+                <th>Camera</th>
+                <th>Ảnh</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in logs %}
+            <tr>
+                <td>{{ log.id }}</td>
+                <td>{{ log.name }}</td>
+                <td>{{ log.student_id }}</td>
+                <td>{{ log.similarity }}</td>
+                <td>{{ log.timestamp }}</td>
+                <td>{{ log.camera_id }}</td>
+                <td>
+                    {% if log.image_base64 %}
+                        <img src="data:image/jpeg;base64,{{ log.image_base64 }}">
+                    {% else %}
+                        Không có ảnh
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
