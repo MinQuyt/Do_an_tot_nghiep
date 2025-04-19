@@ -10,7 +10,11 @@ Download thư viện insightface từ trên github về máy https://github.com/
   ```shell
    pip install C:\Users\Admin\Downloads\insightface_windows-main\whls\insightface-0.7.3-cp39-cp39-win_amd64.whl // chạy lệnh để cài thư viện vào môi trường ảo
    ```
-      
+Download các thư viện cần thiết:
+  ```shell
+  pip install flask opencv-python numpy insightface mysql-connector-python
+  ```
+    
 II,### Thêm người mới vào dataset
 
 1. **Create a folder with the folder name being the name of the person**
