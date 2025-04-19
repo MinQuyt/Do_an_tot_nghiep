@@ -50,8 +50,25 @@ II,### Thêm người mới vào dataset
    ```shell
    python save_embeddings.py
    ```
-
-4. **Run to recognize**
+4. **Creat Database face_recognition && table logs
+   *create database face_recognition
+   ```shell
+       create database  face_recognition;
+   ```
+   *create table logs
+     ```shell
+        CREATE TABLE IF NOT EXISTS logs (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                person_name VARCHAR(100),
+                student_id VARCHAR(20),
+                similarity FLOAT,
+                timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+                camera_id VARCHAR(50),
+                student_name VARCHAR(255),
+                image_blob LONGBLOB
+            )
+     ```
+6. **Run to recognize**
 
    ```shell
    python app.py
