@@ -2,7 +2,7 @@
 ## ⚙️ Create Environment and Install Packages
 
 ```bash
-conda create -n face-dev python=3.9
+conda create -n quy_face -c conda-forge onnxruntime python=3.9
 conda activate face-dev
 ```
 
@@ -11,11 +11,11 @@ pip install -r requirements.txt
 ```
 
 > ⚠️ Yêu cầu:
-> - Python 3.8+
-> - ONNX Runtime (CPU or GPU)
+> - Python 3.9
+> - ONNX Runtime (GPU)
 > - MySQL Connector
-> - `opencv-python`, `numpy`, `requests`, `scikit-learn`
-
+> - pip install opencv-python numpy pillow onnxruntime-gpu scikit-learn requests
+> - pip install "C:\Users\Admin\Downloads\insightface_windows-main\whls\insightface-0.7.3-cp39-cp39-win_amd64.whl" 
 ---
 
 ## 🧑‍💼 Add New Persons to Dataset
@@ -44,16 +44,16 @@ pip install -r requirements.txt
            └── img2.jpg
    ```
 
-3. **Chạy script thêm dữ liệu khuôn mặt mới**
+3. **Chạy script lưu embeddings của dữ liệu trong dataset vào datasets/face_features/embeddings.npz**
 
    ```bash
-   python add_persons.py
+   python save_embeddings.py
    ```
 
 4. **Chạy nhận diện khuôn mặt (thực thi chính)**
 
    ```bash
-   python recognize.py
+   python app.py
    ```
 
 ---
