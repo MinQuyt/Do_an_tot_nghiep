@@ -77,7 +77,7 @@ pip install -r requirements.txt
 
 ## 🛢️ Database - MySQL
 
-### 🧱 Cấu trúc bảng `face_logs`
+### 🧱 Cấu trúc bảng `logs`
 
 | Trường         | Kiểu dữ liệu     | Mô tả                          |
 |----------------|------------------|--------------------------------|
