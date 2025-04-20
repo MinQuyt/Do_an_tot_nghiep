@@ -106,15 +106,8 @@ pip install -r requirements.txt
 ## 🖼️ Demo Architecture
 
 ```
-[ IP Camera / Webcam ]
-        ↓
-[ RetinaFace Detector ]
-        ↓
-[ ArcFace Recognizer ]
-        ↓
-[ Embedding Matching ]
-        ↓
-[ Save to MySQL ] + [ Send Telegram Alert if unknown ]
+![image](https://github.com/user-attachments/assets/8ecebac5-f18e-44f0-90f5-a5ff22a6a828)
+
 ```
 
 ---
