@@ -14,7 +14,7 @@ pip install -r requirements.txt
 > - Python 3.9
 > - ONNX Runtime (GPU)
 > - MySQL Connector
-> - pip install opencv-python numpy pillow onnxruntime-gpu scikit-learn requests
+> - pip install Flask pyttsx3 mysql-connector SpeechRecognition pyaudio  python-telegram-bot pymysql flask opencv-python numpy insightface
 > - pip install "C:\Users\Admin\Downloads\insightface_windows-main\whls\insightface-0.7.3-cp39-cp39-win_amd64.whl" 
 ---
 
