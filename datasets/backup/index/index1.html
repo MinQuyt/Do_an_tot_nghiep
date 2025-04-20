@@ -1,0 +1,144 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Live Face Recognition</title>
+  <style>
+    /* Resetting styles for modern look */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #121212;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+    }
+
+    h2 {
+      color: #00c0e0;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 900px;
+      background-color: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .video-feed {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .video-feed img {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .upload-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .upload-section label {
+      font-size: 16px;
+      color: #ccc;
+      margin-bottom: 10px;
+    }
+
+    .upload-section input[type="file"] {
+      background-color: #333;
+      color: #fff;
+      border: 1px solid #444;
+      padding: 12px;
+      width: 80%;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .upload-section input[type="file"]:hover {
+      background-color: #444;
+    }
+
+    .upload-section button {
+      background-color: #00c0e0;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: background-color 0.3s ease;
+    }
+
+    .upload-section button:hover {
+      background-color: #00a7b3;
+    }
+
+    .link-section {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .link-section a {
+      color: #00c0e0;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    .link-section a:hover {
+      color: #00a7b3;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h2>🔍 Live Stream Nhận Diện</h2>
+
+  <div class="container">
+    <!-- Video Feed Section -->
+    <div class="video-feed">
+      <img src="{{ url_for('video_feed') }}" alt="Live Feed" />
+    </div>
+
+    <!-- Image Upload Section -->
+    <div class="upload-section">
+      <form method="POST" enctype="multipart/form-data" action="/upload_image">
+        <label for="file">Thêm ảnh người mới:</label>
+        <input type="file" name="file" id="file">
+        <button type="submit">Upload</button>
+      </form>
+    </div>
+
+    <!-- Link to Logs -->
+    <div class="link-section">
+      <a href="/logs">📜 Xem Nhật Ký Nhận Diện</a>
+    </div>
+  </div>
+
+</body>
+</html>

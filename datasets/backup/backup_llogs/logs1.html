@@ -1,0 +1,102 @@
+<!-- templates/logs.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nhật Ký Nhận Diện</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .back-link {
+      text-decoration: none;
+      color: #3498db;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 6px 12px;
+      border: 1px solid #3498db;
+      border-radius: 6px;
+      background-color: #ffffff;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .back-link:hover {
+      background-color: #3498db;
+      color: #fff;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .log-entry {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 15px auto;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      transition: transform 0.2s;
+    }
+
+    .log-entry:hover {
+      transform: scale(1.01);
+    }
+
+    .log-header {
+      font-size: 18px;
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+    }
+
+    .log-details {
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .log-image img {
+      max-width: 200px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <a href="/" class="back-link">⬅ Quay lại</a>
+  </div>
+
+  <h2>📘 Nhật Ký Nhận Diện</h2>
+
+  {% for log in logs %}
+    <div class="log-entry">
+      <div class="log-header">
+        {{ log.name }} - MSSV: {{ log.student_id }} - Độ tương đồng: {{ log.similarity }}
+      </div>
+      <div class="log-details">
+        🕒 {{ log.timestamp }} &nbsp; | &nbsp; 📷 Camera: {{ log.camera_id }}
+      </div>
+      {% if log.image_base64 %}
+        <div class="log-image">
+          <img src="data:image/jpeg;base64,{{ log.image_base64 }}">
+        </div>
+      {% endif %}
+    </div>
+  {% endfor %}
+</body>
+</html>
