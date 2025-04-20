@@ -106,7 +106,21 @@ pip install -r requirements.txt
 ## 🖼️ Demo Architecture
 
 ```
-
+ [Camera IP]
+         ↓
+[Face Detection (RetinaFace)]
+         ↓
+[Face Embedding (ArcFace)]
+         ↓
+[So sánh Cosine Similarity]
+         ↓            ↘
+ [Đã nhận dạng]     [Người lạ]
+         ↓              ↓
+ [Ghi log + tên]    [Gửi Telegram]
+         ↓              ↓
+ [Lưu DB MySQL]   [Lưu DB MySQL]
+         ↓              ↓
+ [Hiển thị tên]   [Ghi "Unknown"]
 ```
 
 ---
