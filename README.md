@@ -105,8 +105,9 @@ pip install -r requirements.txt
 
 ## 🖼️ Demo Architecture
 
-    <img src="./kien_truc_he_thong.jpg" alt="Kiến trúc hệ thống" />
+```
 
+```
 
 ---
 
