@@ -118,9 +118,11 @@ pip install -r requirements.txt
          ↓              ↓
  [Ghi log + tên]    [Gửi Telegram]
          ↓              ↓
- [Lưu DB MySQL]   [Lưu DB MySQL]
+ [Gửi Telegram]   [Lưu DB MySQL]
          ↓              ↓
- [Hiển thị tên]   [Ghi "Unknown"]
+ [Lưu DB MySQL]   [Ghi "Unknown"]
+         ↓              
+ [Hiển thị tên]   
 ```
 
 ---
