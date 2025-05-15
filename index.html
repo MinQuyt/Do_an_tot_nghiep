@@ -1,144 +1,151 @@
-<!-- templates/index.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Live Face Recognition</title>
-  <style>
-    /* Resetting styles for modern look */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #121212;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      padding: 20px;
-    }
-
-    h2 {
-      color: #00c0e0;
-      font-size: 2rem;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 900px;
-      background-color: #1e1e1e;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    .video-feed {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .video-feed img {
-      max-width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    .upload-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 20px;
-    }
-
-    .upload-section label {
-      font-size: 16px;
-      color: #ccc;
-      margin-bottom: 10px;
-    }
-
-    .upload-section input[type="file"] {
-      background-color: #333;
-      color: #fff;
-      border: 1px solid #444;
-      padding: 12px;
-      width: 80%;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s ease;
-    }
-
-    .upload-section input[type="file"]:hover {
-      background-color: #444;
-    }
-
-    .upload-section button {
-      background-color: #00c0e0;
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      font-size: 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 15px;
-      transition: background-color 0.3s ease;
-    }
-
-    .upload-section button:hover {
-      background-color: #00a7b3;
-    }
-
-    .link-section {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .link-section a {
-      color: #00c0e0;
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-    }
-
-    .link-section a:hover {
-      color: #00a7b3;
-    }
-
-  </style>
-</head>
-<body>
-
-  <h2>🔍 Live Stream Nhận Diện</h2>
-
-  <div class="container">
-    <!-- Video Feed Section -->
-    <div class="video-feed">
-      <img src="{{ url_for('video_feed') }}" alt="Live Feed" />
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>AIoT Face Recognition & Gemini Chatbot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body { display: flex; height: 100vh; font-family: 'Roboto', sans-serif; background: #f4f6f9; }
+      #video-container { flex: 1.5; background: #000; display: flex; align-items: center; justify-content: center; border-right: 2px solid #e0e0e0; }
+      #video-container img { width: 100%; height: 100%; object-fit: cover; }
+      #chat-container { flex: 1; display: flex; flex-direction: column; background: #fff; }
+      #chat-header { padding: 20px; background: #007bff; color: #fff; text-align: center; font-size: 1.2rem; }
+      #chat-body { flex: 1; padding: 20px; overflow-y: auto; }
+      .message { margin-bottom: 15px; }
+      .message.user { text-align: right; }
+      .message .text { display: inline-block; padding: 10px 15px; border-radius: 20px; max-width: 80%; }
+      .message.user .text { background: #007bff; color: #fff; }
+      .message.bot .text { background: #e0e0e0; color: #333; }
+      #chat-footer {
+        padding: 10px 20px;
+        display: flex;
+        gap: 10px;
+        border-top: 1px solid #ddd;
+        flex-wrap: wrap;
+        align-items: center;
+        background: #fff;
+      }
+      #user-input { flex: 1 1 60%; padding: 10px; border: 1px solid #ccc; border-radius: 20px; font-size: 1rem; }
+      button { padding: 0 15px; border: none; border-radius: 20px; background: #007bff; color: #fff; cursor: pointer; font-size: 1rem; }
+      button:hover { background: #0056b3; }
+      #mic-btn { background: #28a745; }
+      #mic-btn:hover { background: #1e7e34; }
+      select, label {
+        font-size: 0.9rem;
+        margin-left: 5px;
+        user-select: none;
+      }
+      #tts-toggle {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+        user-select: none;
+      }
+      iframe.yt-video { width: 100%; height: 200px; border: none; margin-top: 10px; border-radius: 10px; }
+    </style>
+  </head>
+  <body>
+    <div id="video-container">
+      <img src="{{ url_for('video_feed') }}" alt="Live Stream" />
+    </div>
+    <div id="chat-container">
+      <div id="chat-header">🤖 Gemini Chatbot</div>
+      <div id="chat-body"></div>
+      <div id="chat-footer">
+        <input type="text" id="user-input" placeholder="Hỏi tôi điều gì..." />
+        <button onclick="sendMessage()">Gửi</button>
+        <button id="mic-btn" onclick="startListening()">🎙️</button>
+        
+        <!-- Mục điều khiển TTS -->
+        <label id="tts-toggle">
+          <input type="checkbox" id="tts-enable" checked />
+          TTS
+        </label>
+        <label for="tts-lang">Ngôn ngữ:</label>
+        <select id="tts-lang">
+          <option value="vi-VN" selected>Tiếng Việt</option>
+          <option value="en-US">English</option>
+        </select>
+      </div>
     </div>
 
-    <!-- Image Upload Section -->
-    <div class="upload-section">
-      <form method="POST" enctype="multipart/form-data" action="/upload_image">
-        <label for="file">Thêm ảnh người mới:</label>
-        <input type="file" name="file" id="file">
-        <button type="submit">Upload</button>
-      </form>
-    </div>
+    <script>
+      const chatBody = document.getElementById('chat-body');
+      const ttsEnable = document.getElementById('tts-enable');
+      const ttsLang = document.getElementById('tts-lang');
 
-    <!-- Link to Logs -->
-    <div class="link-section">
-      <a href="/logs">📜 Xem Nhật Ký Nhận Diện</a>
-    </div>
-  </div>
+      function appendMessage(sender, text, isBot = false) {
+        const div = document.createElement('div');
+        div.classList.add('message', isBot ? 'bot' : 'user');
+        const bubble = document.createElement('div');
+        bubble.classList.add('text');
+        bubble.innerText = text;
+        div.appendChild(bubble);
 
-</body>
-</html>
+        const ytMatch = text.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]+)/);
+        if (ytMatch) {
+          const iframe = document.createElement('iframe');
+          iframe.classList.add('yt-video');
+          iframe.src = `https://www.youtube.com/embed/${ytMatch[1]}?autoplay=1&mute=1`;
+          div.appendChild(iframe);
+        }
+
+        chatBody.appendChild(div);
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }
+
+      function speakText(text) {
+        if (!ttsEnable.checked) return;  // Nếu tắt TTS thì thôi
+
+        const synth = window.speechSynthesis;
+        if (synth.speaking) {
+          synth.cancel(); // Hủy nếu đang đọc để tránh đè nhau
+        }
+
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = ttsLang.value; 
+        utterance.rate = 1.0;
+        utterance.pitch = 1.0;
+        synth.speak(utterance);
+      }
+
+      async function sendMessage() {
+        const input = document.getElementById('user-input');
+        const msg = input.value.trim();
+        if (!msg) return;
+        appendMessage('Bạn', msg);
+        input.value = '';
+        const res = await fetch('/gpt', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: msg })
+        });
+        const data = await res.json();
+        appendMessage('Gemini', data.reply, true);
+        speakText(data.reply);
+      }
+
+      function startListening() {
+        if (!('webkitSpeechRecognition' in window)) {
+          alert('Trình duyệt không hỗ trợ STT');
+          return;
+        }
+        const recognition = new webkitSpeechRecognition();
+        recognition.lang = 'vi-VN';
+        recognition.interimResults = false;
+        recognition.onresult = (e) => {
+          document.getElementById('user-input').value = e.results[0][0].transcript;
+          sendMessage();
+        };
+        recognition.onerror = (e) => {
+          console.error(e);
+        };
+        recognition.start();
+      }
+    </script>
+  </body>
+  </html>
