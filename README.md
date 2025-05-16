@@ -100,7 +100,7 @@ pip install -r requirements.txt
 - Admin Chat ID: `6818084029`
 
 > Khi phát hiện khuôn mặt lạ (chưa có trong hệ thống), bot sẽ gửi ảnh và thông tin cảnh báo đến điện thoại qua Telegram.
-
+> Ta cũng có thể hỏi đáp Botchat của Telegram tương tự như hỏi GPT 
 ---
 
 ## 🖼️ Demo Architecture
