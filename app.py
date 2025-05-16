@@ -313,6 +313,4 @@ if __name__ == '__main__':
     # Chạy app Flask chính
     app.run(debug=True)
 
-if __name__ == "__main__":
-    threading.Thread(target=telegram_bot_listener, daemon=True).start()
-    app.run(host='0.0.0.0', port=5000, debug=True)
+
